@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3665DC2F1B09E4090084EB27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC2E1B09E4090084EB27 /* main.m */; };
+		3665DC321B09E4090084EB27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC311B09E4090084EB27 /* AppDelegate.m */; };
+		3665DC351B09E4090084EB27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC341B09E4090084EB27 /* ViewController.m */; };
+		3665DC381B09E4090084EB27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC361B09E4090084EB27 /* Main.storyboard */; };
+		3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC391B09E4090084EB27 /* Images.xcassets */; };
+		3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */; };
+		3665DC491B09E4090084EB27 /* BaiduT5PlayerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC481B09E4090084EB27 /* BaiduT5PlayerDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3665DC431B09E4090084EB27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3665DC211B09E4090084EB27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3665DC281B09E4090084EB27;
+			remoteInfo = BaiduT5PlayerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3665DC291B09E4090084EB27 /* BaiduT5PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduT5PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3665DC2D1B09E4090084EB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3665DC2E1B09E4090084EB27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3665DC301B09E4090084EB27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3665DC311B09E4090084EB27 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3665DC331B09E4090084EB27 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3665DC341B09E4090084EB27 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3665DC371B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3665DC391B09E4090084EB27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3665DC3C1B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3665DC421B09E4090084EB27 /* BaiduT5PlayerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaiduT5PlayerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3665DC471B09E4090084EB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3665DC481B09E4090084EB27 /* BaiduT5PlayerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduT5PlayerDemoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3665DC261B09E4090084EB27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3665DC3F1B09E4090084EB27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3665DC201B09E4090084EB27 = {
+			isa = PBXGroup;
+			children = (
+				3665DC2B1B09E4090084EB27 /* BaiduT5PlayerDemo */,
+				3665DC451B09E4090084EB27 /* BaiduT5PlayerDemoTests */,
+				3665DC2A1B09E4090084EB27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3665DC2A1B09E4090084EB27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3665DC291B09E4090084EB27 /* BaiduT5PlayerDemo.app */,
+				3665DC421B09E4090084EB27 /* BaiduT5PlayerDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3665DC2B1B09E4090084EB27 /* BaiduT5PlayerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3665DC301B09E4090084EB27 /* AppDelegate.h */,
+				3665DC311B09E4090084EB27 /* AppDelegate.m */,
+				3665DC331B09E4090084EB27 /* ViewController.h */,
+				3665DC341B09E4090084EB27 /* ViewController.m */,
+				3665DC361B09E4090084EB27 /* Main.storyboard */,
+				3665DC391B09E4090084EB27 /* Images.xcassets */,
+				3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */,
+				3665DC2C1B09E4090084EB27 /* Supporting Files */,
+			);
+			path = BaiduT5PlayerDemo;
+			sourceTree = "<group>";
+		};
+		3665DC2C1B09E4090084EB27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3665DC2D1B09E4090084EB27 /* Info.plist */,
+				3665DC2E1B09E4090084EB27 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3665DC451B09E4090084EB27 /* BaiduT5PlayerDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3665DC481B09E4090084EB27 /* BaiduT5PlayerDemoTests.m */,
+				3665DC461B09E4090084EB27 /* Supporting Files */,
+			);
+			path = BaiduT5PlayerDemoTests;
+			sourceTree = "<group>";
+		};
+		3665DC461B09E4090084EB27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3665DC471B09E4090084EB27 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3665DC281B09E4090084EB27 /* BaiduT5PlayerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3665DC4C1B09E4090084EB27 /* Build configuration list for PBXNativeTarget "BaiduT5PlayerDemo" */;
+			buildPhases = (
+				3665DC251B09E4090084EB27 /* Sources */,
+				3665DC261B09E4090084EB27 /* Frameworks */,
+				3665DC271B09E4090084EB27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BaiduT5PlayerDemo;
+			productName = BaiduT5PlayerDemo;
+			productReference = 3665DC291B09E4090084EB27 /* BaiduT5PlayerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3665DC411B09E4090084EB27 /* BaiduT5PlayerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3665DC4F1B09E4090084EB27 /* Build configuration list for PBXNativeTarget "BaiduT5PlayerDemoTests" */;
+			buildPhases = (
+				3665DC3E1B09E4090084EB27 /* Sources */,
+				3665DC3F1B09E4090084EB27 /* Frameworks */,
+				3665DC401B09E4090084EB27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3665DC441B09E4090084EB27 /* PBXTargetDependency */,
+			);
+			name = BaiduT5PlayerDemoTests;
+			productName = BaiduT5PlayerDemoTests;
+			productReference = 3665DC421B09E4090084EB27 /* BaiduT5PlayerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3665DC211B09E4090084EB27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = cuppi;
+				TargetAttributes = {
+					3665DC281B09E4090084EB27 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					3665DC411B09E4090084EB27 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 3665DC281B09E4090084EB27;
+					};
+				};
+			};
+			buildConfigurationList = 3665DC241B09E4090084EB27 /* Build configuration list for PBXProject "BaiduT5PlayerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3665DC201B09E4090084EB27;
+			productRefGroup = 3665DC2A1B09E4090084EB27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3665DC281B09E4090084EB27 /* BaiduT5PlayerDemo */,
+				3665DC411B09E4090084EB27 /* BaiduT5PlayerDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3665DC271B09E4090084EB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3665DC381B09E4090084EB27 /* Main.storyboard in Resources */,
+				3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */,
+				3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3665DC401B09E4090084EB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3665DC251B09E4090084EB27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3665DC351B09E4090084EB27 /* ViewController.m in Sources */,
+				3665DC321B09E4090084EB27 /* AppDelegate.m in Sources */,
+				3665DC2F1B09E4090084EB27 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3665DC3E1B09E4090084EB27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3665DC491B09E4090084EB27 /* BaiduT5PlayerDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3665DC441B09E4090084EB27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3665DC281B09E4090084EB27 /* BaiduT5PlayerDemo */;
+			targetProxy = 3665DC431B09E4090084EB27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3665DC361B09E4090084EB27 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3665DC371B09E4090084EB27 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3665DC3C1B09E4090084EB27 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3665DC4A1B09E4090084EB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3665DC4B1B09E4090084EB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3665DC4D1B09E4090084EB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BaiduT5PlayerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3665DC4E1B09E4090084EB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BaiduT5PlayerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3665DC501B09E4090084EB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BaiduT5PlayerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaiduT5PlayerDemo.app/BaiduT5PlayerDemo";
+			};
+			name = Debug;
+		};
+		3665DC511B09E4090084EB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BaiduT5PlayerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaiduT5PlayerDemo.app/BaiduT5PlayerDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3665DC241B09E4090084EB27 /* Build configuration list for PBXProject "BaiduT5PlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3665DC4A1B09E4090084EB27 /* Debug */,
+				3665DC4B1B09E4090084EB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3665DC4C1B09E4090084EB27 /* Build configuration list for PBXNativeTarget "BaiduT5PlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3665DC4D1B09E4090084EB27 /* Debug */,
+				3665DC4E1B09E4090084EB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3665DC4F1B09E4090084EB27 /* Build configuration list for PBXNativeTarget "BaiduT5PlayerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3665DC501B09E4090084EB27 /* Debug */,
+				3665DC511B09E4090084EB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3665DC211B09E4090084EB27 /* Project object */;
+}
