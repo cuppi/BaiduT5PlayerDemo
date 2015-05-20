@@ -13,21 +13,34 @@
 		3665DC381B09E4090084EB27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC361B09E4090084EB27 /* Main.storyboard */; };
 		3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC391B09E4090084EB27 /* Images.xcassets */; };
 		3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */; };
-		3665DC491B09E4090084EB27 /* BaiduT5PlayerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC481B09E4090084EB27 /* BaiduT5PlayerDemoTests.m */; };
+		36A494201B0B0D37009ED6F1 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */; };
+		36A494271B0B28B7009ED6F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A494261B0B28B7009ED6F1 /* Reachability.m */; };
+		36A4942A1B0B36AF009ED6F1 /* IcerEnglish.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */; };
+		36A4942C1B0B385D009ED6F1 /* IcerJapanese.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 36A4942B1B0B385D009ED6F1 /* IcerJapanese.mp4 */; };
+		36A58F441B09EC7A001C894F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F431B09EC7A001C894F /* MobileCoreServices.framework */; };
+		36A58F461B09EC8C001C894F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F451B09EC8C001C894F /* AudioToolbox.framework */; };
+		36A58F481B09EC9D001C894F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F471B09EC9D001C894F /* SystemConfiguration.framework */; };
+		36A58F4A1B09ECAE001C894F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F491B09ECAE001C894F /* CFNetwork.framework */; };
+		36A58F4C1B09ECB6001C894F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F4B1B09ECB6001C894F /* QuartzCore.framework */; };
+		36A58F4E1B09ECBD001C894F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F4D1B09ECBD001C894F /* OpenGLES.framework */; };
+		36A58F501B09ECC4001C894F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F4F1B09ECC4001C894F /* OpenAL.framework */; };
+		36A58F521B09ECCD001C894F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F511B09ECCD001C894F /* MediaPlayer.framework */; };
+		36A58F541B09ECD3001C894F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F531B09ECD3001C894F /* UIKit.framework */; };
+		36A58F561B09ECDB001C894F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F551B09ECDB001C894F /* Foundation.framework */; };
+		36A58F581B09ECE1001C894F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F571B09ECE1001C894F /* CoreGraphics.framework */; };
+		36A58F5A1B09ECEC001C894F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F591B09ECEC001C894F /* Security.framework */; };
+		36A58F5C1B09ED00001C894F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F5B1B09ED00001C894F /* libz.dylib */; };
+		36A58F5E1B09ED08001C894F /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F5D1B09ED08001C894F /* libbz2.1.0.dylib */; };
+		36A58F681B09ED79001C894F /* libASIHTTP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F611B09ED79001C894F /* libASIHTTP.a */; };
+		36A58F6A1B09ED79001C894F /* libBase64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F621B09ED79001C894F /* libBase64.a */; };
+		36A58F6B1B09ED79001C894F /* libCyberPlayerController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F631B09ED79001C894F /* libCyberPlayerController.a */; };
+		36A58F6C1B09ED79001C894F /* libGzipCompressor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F641B09ED79001C894F /* libGzipCompressor.a */; };
+		36A58F6D1B09ED79001C894F /* libReachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F651B09ED79001C894F /* libReachability.a */; };
+		36A58F6E1B09ED79001C894F /* libSBJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F661B09ED79001C894F /* libSBJSON.a */; };
+		36A58F6F1B09ED79001C894F /* libCyberPlayerUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F671B09ED79001C894F /* libCyberPlayerUtils.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3665DC431B09E4090084EB27 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3665DC211B09E4090084EB27 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3665DC281B09E4090084EB27;
-			remoteInfo = BaiduT5PlayerDemo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		3665DC291B09E4090084EB27 /* BaiduT5PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduT5PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3665DC2D1B09E4090084EB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3665DC2E1B09E4090084EB27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3665DC301B09E4090084EB27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -37,9 +50,35 @@
 		3665DC371B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3665DC391B09E4090084EB27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3665DC3C1B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3665DC421B09E4090084EB27 /* BaiduT5PlayerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaiduT5PlayerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3665DC471B09E4090084EB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3665DC481B09E4090084EB27 /* BaiduT5PlayerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduT5PlayerDemoTests.m; sourceTree = "<group>"; };
+		36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = "<group>"; };
+		36A494211B0B0D47009ED6F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		36A494251B0B28B7009ED6F1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		36A494261B0B28B7009ED6F1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcerEnglish.mp4; sourceTree = "<group>"; };
+		36A4942B1B0B385D009ED6F1 /* IcerJapanese.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcerJapanese.mp4; sourceTree = "<group>"; };
+		36A58F431B09EC7A001C894F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		36A58F451B09EC8C001C894F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		36A58F471B09EC9D001C894F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		36A58F491B09ECAE001C894F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		36A58F4B1B09ECB6001C894F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		36A58F4D1B09ECBD001C894F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		36A58F4F1B09ECC4001C894F /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		36A58F511B09ECCD001C894F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		36A58F531B09ECD3001C894F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		36A58F551B09ECDB001C894F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		36A58F571B09ECE1001C894F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		36A58F591B09ECEC001C894F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		36A58F5B1B09ED00001C894F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		36A58F5D1B09ED08001C894F /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		36A58F611B09ED79001C894F /* libASIHTTP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libASIHTTP.a; sourceTree = "<group>"; };
+		36A58F621B09ED79001C894F /* libBase64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBase64.a; sourceTree = "<group>"; };
+		36A58F631B09ED79001C894F /* libCyberPlayerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCyberPlayerController.a; sourceTree = "<group>"; };
+		36A58F641B09ED79001C894F /* libGzipCompressor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGzipCompressor.a; sourceTree = "<group>"; };
+		36A58F651B09ED79001C894F /* libReachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libReachability.a; sourceTree = "<group>"; };
+		36A58F661B09ED79001C894F /* libSBJSON.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSBJSON.a; sourceTree = "<group>"; };
+		36A58F671B09ED79001C894F /* libCyberPlayerUtils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCyberPlayerUtils.a; sourceTree = "<group>"; };
+		36A58F711B09EEB4001C894F /* CyberPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyberPlayerController.h; sourceTree = "<group>"; };
+		36DD10271B0ADAAD00F75A5C /* BaiduT5PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduT5PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,13 +86,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3665DC3F1B09E4090084EB27 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				36A58F5E1B09ED08001C894F /* libbz2.1.0.dylib in Frameworks */,
+				36A58F5C1B09ED00001C894F /* libz.dylib in Frameworks */,
+				36A58F5A1B09ECEC001C894F /* Security.framework in Frameworks */,
+				36A58F581B09ECE1001C894F /* CoreGraphics.framework in Frameworks */,
+				36A58F561B09ECDB001C894F /* Foundation.framework in Frameworks */,
+				36A58F541B09ECD3001C894F /* UIKit.framework in Frameworks */,
+				36A58F6A1B09ED79001C894F /* libBase64.a in Frameworks */,
+				36A58F6D1B09ED79001C894F /* libReachability.a in Frameworks */,
+				36A58F6E1B09ED79001C894F /* libSBJSON.a in Frameworks */,
+				36A58F6F1B09ED79001C894F /* libCyberPlayerUtils.a in Frameworks */,
+				36A58F521B09ECCD001C894F /* MediaPlayer.framework in Frameworks */,
+				36A58F501B09ECC4001C894F /* OpenAL.framework in Frameworks */,
+				36A58F4E1B09ECBD001C894F /* OpenGLES.framework in Frameworks */,
+				36A494201B0B0D37009ED6F1 /* libMBProgressHUD.a in Frameworks */,
+				36A58F681B09ED79001C894F /* libASIHTTP.a in Frameworks */,
+				36A58F4C1B09ECB6001C894F /* QuartzCore.framework in Frameworks */,
+				36A58F6C1B09ED79001C894F /* libGzipCompressor.a in Frameworks */,
+				36A58F4A1B09ECAE001C894F /* CFNetwork.framework in Frameworks */,
+				36A58F481B09EC9D001C894F /* SystemConfiguration.framework in Frameworks */,
+				36A58F461B09EC8C001C894F /* AudioToolbox.framework in Frameworks */,
+				36A58F6B1B09ED79001C894F /* libCyberPlayerController.a in Frameworks */,
+				36A58F441B09EC7A001C894F /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,24 +117,21 @@
 		3665DC201B09E4090084EB27 = {
 			isa = PBXGroup;
 			children = (
+				36A494281B0B3698009ED6F1 /* Movie */,
+				36A58F601B09ED2F001C894F /* Frameworks */,
+				36A58F5F1B09ED2D001C894F /* Resource */,
 				3665DC2B1B09E4090084EB27 /* BaiduT5PlayerDemo */,
-				3665DC451B09E4090084EB27 /* BaiduT5PlayerDemoTests */,
-				3665DC2A1B09E4090084EB27 /* Products */,
+				36DD10271B0ADAAD00F75A5C /* BaiduT5PlayerDemo.app */,
 			);
-			sourceTree = "<group>";
-		};
-		3665DC2A1B09E4090084EB27 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3665DC291B09E4090084EB27 /* BaiduT5PlayerDemo.app */,
-				3665DC421B09E4090084EB27 /* BaiduT5PlayerDemoTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		3665DC2B1B09E4090084EB27 /* BaiduT5PlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				36A494251B0B28B7009ED6F1 /* Reachability.h */,
+				36A494261B0B28B7009ED6F1 /* Reachability.m */,
+				36A494211B0B0D47009ED6F1 /* MBProgressHUD.h */,
+				36A58F711B09EEB4001C894F /* CyberPlayerController.h */,
 				3665DC301B09E4090084EB27 /* AppDelegate.h */,
 				3665DC311B09E4090084EB27 /* AppDelegate.m */,
 				3665DC331B09E4090084EB27 /* ViewController.h */,
@@ -102,21 +153,49 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3665DC451B09E4090084EB27 /* BaiduT5PlayerDemoTests */ = {
+		36A494281B0B3698009ED6F1 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
-				3665DC481B09E4090084EB27 /* BaiduT5PlayerDemoTests.m */,
-				3665DC461B09E4090084EB27 /* Supporting Files */,
+				36A4942B1B0B385D009ED6F1 /* IcerJapanese.mp4 */,
+				36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */,
 			);
-			path = BaiduT5PlayerDemoTests;
+			name = Movie;
 			sourceTree = "<group>";
 		};
-		3665DC461B09E4090084EB27 /* Supporting Files */ = {
+		36A58F5F1B09ED2D001C894F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3665DC471B09E4090084EB27 /* Info.plist */,
+				36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */,
+				36A58F611B09ED79001C894F /* libASIHTTP.a */,
+				36A58F621B09ED79001C894F /* libBase64.a */,
+				36A58F631B09ED79001C894F /* libCyberPlayerController.a */,
+				36A58F641B09ED79001C894F /* libGzipCompressor.a */,
+				36A58F651B09ED79001C894F /* libReachability.a */,
+				36A58F661B09ED79001C894F /* libSBJSON.a */,
+				36A58F671B09ED79001C894F /* libCyberPlayerUtils.a */,
+				36A58F5D1B09ED08001C894F /* libbz2.1.0.dylib */,
+				36A58F5B1B09ED00001C894F /* libz.dylib */,
 			);
-			name = "Supporting Files";
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		36A58F601B09ED2F001C894F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36A58F591B09ECEC001C894F /* Security.framework */,
+				36A58F571B09ECE1001C894F /* CoreGraphics.framework */,
+				36A58F551B09ECDB001C894F /* Foundation.framework */,
+				36A58F531B09ECD3001C894F /* UIKit.framework */,
+				36A58F511B09ECCD001C894F /* MediaPlayer.framework */,
+				36A58F4F1B09ECC4001C894F /* OpenAL.framework */,
+				36A58F4D1B09ECBD001C894F /* OpenGLES.framework */,
+				36A58F4B1B09ECB6001C894F /* QuartzCore.framework */,
+				36A58F491B09ECAE001C894F /* CFNetwork.framework */,
+				36A58F471B09EC9D001C894F /* SystemConfiguration.framework */,
+				36A58F451B09EC8C001C894F /* AudioToolbox.framework */,
+				36A58F431B09EC7A001C894F /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,26 +215,8 @@
 			);
 			name = BaiduT5PlayerDemo;
 			productName = BaiduT5PlayerDemo;
-			productReference = 3665DC291B09E4090084EB27 /* BaiduT5PlayerDemo.app */;
+			productReference = 36DD10271B0ADAAD00F75A5C /* BaiduT5PlayerDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		3665DC411B09E4090084EB27 /* BaiduT5PlayerDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3665DC4F1B09E4090084EB27 /* Build configuration list for PBXNativeTarget "BaiduT5PlayerDemoTests" */;
-			buildPhases = (
-				3665DC3E1B09E4090084EB27 /* Sources */,
-				3665DC3F1B09E4090084EB27 /* Frameworks */,
-				3665DC401B09E4090084EB27 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3665DC441B09E4090084EB27 /* PBXTargetDependency */,
-			);
-			name = BaiduT5PlayerDemoTests;
-			productName = BaiduT5PlayerDemoTests;
-			productReference = 3665DC421B09E4090084EB27 /* BaiduT5PlayerDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -169,10 +230,6 @@
 					3665DC281B09E4090084EB27 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
-					3665DC411B09E4090084EB27 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 3665DC281B09E4090084EB27;
-					};
 				};
 			};
 			buildConfigurationList = 3665DC241B09E4090084EB27 /* Build configuration list for PBXProject "BaiduT5PlayerDemo" */;
@@ -184,12 +241,11 @@
 				Base,
 			);
 			mainGroup = 3665DC201B09E4090084EB27;
-			productRefGroup = 3665DC2A1B09E4090084EB27 /* Products */;
+			productRefGroup = 3665DC201B09E4090084EB27;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3665DC281B09E4090084EB27 /* BaiduT5PlayerDemo */,
-				3665DC411B09E4090084EB27 /* BaiduT5PlayerDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -200,15 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3665DC381B09E4090084EB27 /* Main.storyboard in Resources */,
+				36A4942C1B0B385D009ED6F1 /* IcerJapanese.mp4 in Resources */,
 				3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */,
 				3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3665DC401B09E4090084EB27 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				36A4942A1B0B36AF009ED6F1 /* IcerEnglish.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,27 +272,12 @@
 			files = (
 				3665DC351B09E4090084EB27 /* ViewController.m in Sources */,
 				3665DC321B09E4090084EB27 /* AppDelegate.m in Sources */,
+				36A494271B0B28B7009ED6F1 /* Reachability.m in Sources */,
 				3665DC2F1B09E4090084EB27 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3665DC3E1B09E4090084EB27 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3665DC491B09E4090084EB27 /* BaiduT5PlayerDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3665DC441B09E4090084EB27 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3665DC281B09E4090084EB27 /* BaiduT5PlayerDemo */;
-			targetProxy = 3665DC431B09E4090084EB27 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3665DC361B09E4090084EB27 /* Main.storyboard */ = {
@@ -349,6 +385,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BaiduT5PlayerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -359,41 +399,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BaiduT5PlayerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		3665DC501B09E4090084EB27 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BaiduT5PlayerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaiduT5PlayerDemo.app/BaiduT5PlayerDemo";
-			};
-			name = Debug;
-		};
-		3665DC511B09E4090084EB27 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BaiduT5PlayerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaiduT5PlayerDemo.app/BaiduT5PlayerDemo";
 			};
 			name = Release;
 		};
@@ -416,14 +426,7 @@
 				3665DC4E1B09E4090084EB27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		3665DC4F1B09E4090084EB27 /* Build configuration list for PBXNativeTarget "BaiduT5PlayerDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3665DC501B09E4090084EB27 /* Debug */,
-				3665DC511B09E4090084EB27 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

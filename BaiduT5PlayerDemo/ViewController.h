@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CyberPlayerController.h"
+#import "MBProgressHUD.h"
+#import "Reachability.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface ViewController : UIViewController
-
-
+@property (nonatomic) Reachability *hostReachability;
+@property (nonatomic) Reachability *internetReachability;
+@property (nonatomic) Reachability *wifiReachability;
 @end
 
