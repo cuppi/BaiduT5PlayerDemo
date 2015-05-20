@@ -15,8 +15,18 @@
 {
     CyberPlayerController *_cpViewController;
     MBProgressHUD *_mbProgressHUD;
-    BOOL _changeSharpness;
+    BOOL _isPlaying;
+    BOOL _isChangeSharpness;
+    BOOL _isPostPlayTimePointNotifier;
+    BOOL _isSliderEditing;
     NSTimeInterval _breakPointTime;
+    NSTimer *_playerTimer;
+    
+    UIView *_progressPlaceHolderView;
+    UILabel *_progressPlaceHolderLabel;
+    UIView *_oprationView;
+    UISlider *_playerSlider;
+    UIButton *_playButton;
 }
 @end
 
@@ -51,8 +61,7 @@
                                                      object:_cpViewController
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
-                                                     
-                                                     NSLog(@"准备完成");
+                                                     [_cpViewController seekTo:_breakPointTime];
                                                  }];
     //  2
     [[NSNotificationCenter defaultCenter]addObserverForName:CyberPlayerPlaybackDidFinishNotification
@@ -60,12 +69,12 @@
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
                                                      NSLog(@"** 2 ************  CyberPlayerPlaybackDidFinishNotification");
-                                                     if(_changeSharpness)
+                                                     if(_isChangeSharpness)
                                                      {
                                                          [_cpViewController start];
                                                          [_cpViewController seekTo:_breakPointTime];
                                                          _breakPointTime = 0;
-                                                         _changeSharpness = NO;
+                                                         _isChangeSharpness = NO;
                                                      }
                                                      
                                                  }];
@@ -130,16 +139,47 @@
                                                  }];
     [self createMetadata];
     [self createViewController];
+    [self createOprationView];
     [self createMBProgressHUD];
-    [self createButton];
+    [self createPlaceHolder];
+    
+    [self createReachabilityObserver];
+    [self startPostPlayTimePointNotifier];
 }
 
 - (void)createMetadata
 {
     _breakPointTime = 0;
-    _changeSharpness = NO;
+    _isPlaying = NO;
+    _isChangeSharpness = NO;
+    _isPostPlayTimePointNotifier = NO;
+    _isSliderEditing = NO;
+    _playerTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                    target:self
+                                                  selector:@selector(actionUpdateProgressBar)
+                                                  userInfo:nil
+                                                   repeats:YES];
+    self.view.backgroundColor = [UIColor blackColor];
     [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)createPlaceHolder
+{
+    _progressPlaceHolderView = [[UILabel alloc]init];
+    [self.view addSubview:_progressPlaceHolderView];
+    _progressPlaceHolderView.center = self.view.center;
+    _progressPlaceHolderView.bounds = CGRectMake(0, 0, 100, 70);
+    _progressPlaceHolderView.hidden = YES;
+    _progressPlaceHolderView.layer.cornerRadius = 5;
+    _progressPlaceHolderView.layer.masksToBounds = YES;
+    _progressPlaceHolderView.layer.backgroundColor = [UIColor blackColor].CGColor;
+    _progressPlaceHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,
+                                                                         CGHeight(_progressPlaceHolderView.frame) - 20,
+                                                                         CGWidth(_progressPlaceHolderView.frame),
+                                                                         20)];
+    [_progressPlaceHolderView addSubview:_progressPlaceHolderLabel];
+    _progressPlaceHolderLabel.font = [UIFont boldSystemFontOfSize:14];
 }
 
 /**
@@ -153,14 +193,20 @@
     [[CyberPlayerController class ]setBAEAPIKey:msAK SecretKey:msSK ];
     _cpViewController = [[CyberPlayerController alloc]initWithContentString:__kMovieUrl2];
     [self.view addSubview:_cpViewController.view];
-    [_cpViewController.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionRight)]];
     _cpViewController.view.frame = CGRectMake(0, 20, 568, 300);
 }
 
-- (void)createMBProgressHUD
+/**
+ *  创建操作的View
+ */
+- (void)createOprationView
 {
-    _mbProgressHUD = [[MBProgressHUD alloc]initWithView:_cpViewController.view];
-    [self.view addSubview:_mbProgressHUD];
+    _oprationView = [[UIView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:_oprationView];
+    _oprationView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+    [_oprationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTouchOprationView)]];
+    [self createButton];
+    [self createPlayerProgressBar];
 }
 
 /**
@@ -168,13 +214,48 @@
  */
 - (void)createButton
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:button];
-    button.frame = CGRectMake(200, 280, 100, 40);
-    [button addTarget:self action:@selector(actionStartPlay:) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"开始播放" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor yellowColor]];
+    _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_oprationView addSubview:_playButton];
+    _playButton.frame = CGRectMake(__kDScreenWidth - 100, __kDScreenHeight - 40, 100, 40);
+    [_playButton addTarget:self action:@selector(actionStartPlay:) forControlEvents:UIControlEventTouchUpInside];
+    [_playButton setTitle:@"开始播放" forState:UIControlStateNormal];
+    [_playButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_playButton setBackgroundColor:[UIColor yellowColor]];
+}
+
+/**
+ *  创建播放进度条
+ */
+- (void)createPlayerProgressBar
+{
+    _playerSlider = [[UISlider alloc]initWithFrame:CGRectMake(0, __kDScreenHeight - 40, __kDScreenWidth - 100, 20)];
+    [_oprationView addSubview:_playerSlider];
+    _playerSlider.backgroundColor = [UIColor orangeColor];
+    [_playerSlider addTarget:self action:@selector(actionProgressBarEndDraged) forControlEvents:UIControlEventTouchUpOutside | UIControlEventTouchUpInside];
+    [_playerSlider addTarget:self action:@selector(actionProgressBarDraging) forControlEvents:UIControlEventValueChanged];
+    [_playerSlider addTarget:self action:@selector(actionProgressBarBeganDraged) forControlEvents:UIControlEventTouchDown];
+}
+
+/**
+ *  创建加载框
+ */
+- (void)createMBProgressHUD
+{
+    _mbProgressHUD = [[MBProgressHUD alloc]initWithView:_cpViewController.view];
+    [self.view addSubview:_mbProgressHUD];
+}
+
+
+
+- (void)createReachabilityObserver
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    NSString *remoteHostName = @"www.apple.com";
+    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    [self.hostReachability startNotifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -183,62 +264,97 @@
 }
 
 
-
 #pragma mark -- action area
 
 - (void)actionStartPlay:(id)sender
 {
-    //    UIButton *button = (UIButton *)sender;
-    //    [_cpViewController start];
-    //    [UIView animateWithDuration:1.5
-    //                     animations:^{
-    //                         button.alpha = 0;
-    //                     }
-    //                     completion:^(BOOL finished) {
-    //                         if(finished)
-    //                         {
-    //                             button.hidden = YES;
-    //                         }
-    //                     }];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(reachabilityChanged:)
-                                                 name:kReachabilityChangedNotification
-                                               object:nil];
-    //Change the host name here to change the server you want to monitor.
-    NSString *remoteHostName = @"www.apple.com";
-    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-    [self.hostReachability startNotifier];
-    
-    
-    
-    /**
-     *  用其他两种方式测试网络连接状态
-     */
-    //    self.internetReachability = [Reachability reachabilityForInternetConnection];
-    //    [self.internetReachability startNotifier];
-    //
-    //    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
-    //    [self.wifiReachability startNotifier];
-    
-    
-}
-
-- (void)actionRight
-{
-    NSLog(@"点击了屏幕");
-    if(_cpViewController.isPreparedToPlay)
+    if(_isPlaying)
     {
-        [_cpViewController seekTo:_cpViewController.currentPlaybackTime + 15];
+        [_cpViewController pause];
+        _breakPointTime = _cpViewController.currentPlaybackTime;
+        [_playButton setTitle:@"开始播放" forState:UIControlStateNormal];
+        _isPlaying = NO;
     }
     else
     {
-        NSLog(@"------------------  还没有准备号");
+        [_cpViewController start];
+        [_playButton setTitle:@"暂停播放" forState:UIControlStateNormal];
+        _isPlaying = YES;
     }
-    
 }
 
+- (void)actionTouchOprationView
+{
+    return;
+    [self actionStartPlay:nil];
+}
+
+- (void)actionUpdateProgressBar
+{
+    if(!_isSliderEditing)
+    {
+        _playerSlider.value = _cpViewController.currentPlaybackTime/_cpViewController.infoDuration;
+        [self setPlaceHolderLabelCurrentTime:_cpViewController.currentPlaybackTime andAllTime:_cpViewController.infoDuration];
+    }
+}
+
+/**
+ *  拖动播放的滑动条
+ */
+- (void)actionProgressBarBeganDraged
+{
+    [self showPlaceHolder];
+    _isSliderEditing = YES;
+}
+
+- (void)actionProgressBarDraging
+{
+    [self setPlaceHolderLabelCurrentTime:_cpViewController.infoDuration*_playerSlider.value andAllTime:_cpViewController.infoDuration];
+}
+
+- (void)actionProgressBarEndDraged
+{
+    [self hiddenPlaceHolder];
+    _isSliderEditing = NO;
+    [_cpViewController seekTo:_cpViewController.infoDuration*_playerSlider.value];
+}
+
+
+
+
+
+#pragma mark -- method
+- (void)startPostPlayTimePointNotifier
+{
+    _isPostPlayTimePointNotifier = YES;
+    [_playerTimer setFireDate:[NSDate distantPast]];
+}
+
+- (void)stopPostPlayTimePointNotifier
+{
+    [_playerTimer setFireDate:[NSDate distantFuture]];
+    _isPostPlayTimePointNotifier = NO;
+}
+
+- (void)showPlaceHolder
+{
+    _progressPlaceHolderView.hidden = NO;
+}
+
+- (void)hiddenPlaceHolder
+{
+    _progressPlaceHolderView.hidden = YES;
+}
+
+- (void)setPlaceHolderLabelCurrentTime:(NSTimeInterval)currentTime andAllTime:(NSTimeInterval)allTime
+{
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%.f",currentTime] attributes:@{NSForegroundColorAttributeName:[UIColor greenColor]}];
+    [attrString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"/%.f",allTime] attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+    
+    _progressPlaceHolderLabel.attributedText = attrString;
+}
+
+#pragma mark -- Reachability method
 /*!
  * Called by Reachability whenever status changes.
  */
@@ -253,56 +369,54 @@
 {
     if(reachability == self.hostReachability)
     {
-        //     NSLog(@"hostReachability");
         [self handleState:reachability];
     }
-    //    if(reachability == self.internetReachability)
-    //    {
-    //        NSLog(@"internetReachability");
-    //        [self printState:reachability];
-    //    }
-    //    if(reachability == self.wifiReachability)
-    //    {
-    //        NSLog(@"wifiReachability");
-    //        [self printState:reachability];
-    //    }
-    
 }
 
 - (void)handleState:(Reachability *)reachability
 {
     NetworkStatus netStatus = [reachability currentReachabilityStatus];
-    //  BOOL connectionRequired = [reachability connectionRequired];
     
     switch (netStatus)
     {
-        case NotReachable:        {
-            /*
-             Minor interface detail- connectionRequired may return YES even when the host is unreachable. We cover that up here...
-             */
+        case NotReachable:
+        {
             NSLog(@"NotReachable");
+            [[[UIAlertView alloc]initWithTitle:@"当前没有网络"
+                                       message:@"请稍后重试"
+                                      delegate:nil
+                             cancelButtonTitle:@"确定"
+                             otherButtonTitles:nil] show];
             break;
         }
             
-        case ReachableViaWWAN:        {
+        case ReachableViaWWAN:
+        {
             if([reachability connectionRequired])
             {
                 NSLog(@"当前是2.5G");
+                _breakPointTime = _cpViewController.currentPlaybackTime;
+                [_cpViewController stop];
+                _isChangeSharpness = YES;
+                [_cpViewController setContentString:__kMovieUrl1];
             }
             else
             {
                 NSLog(@"当前是3G");
+                _breakPointTime = _cpViewController.currentPlaybackTime;
+                [_cpViewController stop];
+                _isChangeSharpness = YES;
+                [_cpViewController setContentString:__kMovieUrl2];
             }
-            _breakPointTime = _cpViewController.currentPlaybackTime;
-            [_cpViewController stop];
-            _changeSharpness = YES;
-            [_cpViewController setContentString:__kMovieUrl1];
+            
             break;
         }
-        case ReachableViaWiFi:        {
+            
+        case ReachableViaWiFi:
+        {
             _breakPointTime = _cpViewController.currentPlaybackTime;
             [_cpViewController stop];
-            _changeSharpness = YES;
+            _isChangeSharpness = YES;
             [_cpViewController setContentString:__kMovieUrl2];
             break;
         }
