@@ -138,6 +138,8 @@
 {
     _breakPointTime = 0;
     _changeSharpness = NO;
+    [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 /**
@@ -152,7 +154,7 @@
     _cpViewController = [[CyberPlayerController alloc]initWithContentString:__kMovieUrl2];
     [self.view addSubview:_cpViewController.view];
     [_cpViewController.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionRight)]];
-    _cpViewController.view.frame = CGRectMake(0, 0, 568, 320);
+    _cpViewController.view.frame = CGRectMake(0, 20, 568, 300);
 }
 
 - (void)createMBProgressHUD
@@ -186,18 +188,18 @@
 
 - (void)actionStartPlay:(id)sender
 {
-    UIButton *button = (UIButton *)sender;
-    [_cpViewController start];
-    [UIView animateWithDuration:1.5
-                     animations:^{
-                         button.alpha = 0;
-                     }
-                     completion:^(BOOL finished) {
-                         if(finished)
-                         {
-                             button.hidden = YES;
-                         }
-                     }];
+    //    UIButton *button = (UIButton *)sender;
+    //    [_cpViewController start];
+    //    [UIView animateWithDuration:1.5
+    //                     animations:^{
+    //                         button.alpha = 0;
+    //                     }
+    //                     completion:^(BOOL finished) {
+    //                         if(finished)
+    //                         {
+    //                             button.hidden = YES;
+    //                         }
+    //                     }];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -209,13 +211,16 @@
     self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
     [self.hostReachability startNotifier];
     
-    //
+    
+    
+    /**
+     *  用其他两种方式测试网络连接状态
+     */
     //    self.internetReachability = [Reachability reachabilityForInternetConnection];
     //    [self.internetReachability startNotifier];
     //
     //    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
     //    [self.wifiReachability startNotifier];
-    //
     
     
 }
@@ -249,7 +254,7 @@
     if(reachability == self.hostReachability)
     {
         //     NSLog(@"hostReachability");
-        [self printState:reachability];
+        [self handleState:reachability];
     }
     //    if(reachability == self.internetReachability)
     //    {
@@ -264,7 +269,7 @@
     
 }
 
-- (void)printState:(Reachability *)reachability
+- (void)handleState:(Reachability *)reachability
 {
     NetworkStatus netStatus = [reachability currentReachabilityStatus];
     //  BOOL connectionRequired = [reachability connectionRequired];
@@ -280,6 +285,14 @@
         }
             
         case ReachableViaWWAN:        {
+            if([reachability connectionRequired])
+            {
+                NSLog(@"当前是2.5G");
+            }
+            else
+            {
+                NSLog(@"当前是3G");
+            }
             _breakPointTime = _cpViewController.currentPlaybackTime;
             [_cpViewController stop];
             _changeSharpness = YES;
