@@ -10,6 +10,7 @@
 #import "CyberPlayerController.h"
 #import "MBProgressHUD.h"
 #import "Reachability.h"
+#import "CPDateManager.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 
 @interface ViewController : UIViewController

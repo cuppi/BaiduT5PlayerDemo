@@ -13,6 +13,7 @@
 		3665DC381B09E4090084EB27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC361B09E4090084EB27 /* Main.storyboard */; };
 		3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC391B09E4090084EB27 /* Images.xcassets */; };
 		3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */; };
+		3683A83E1B0D809A00CCA2C3 /* libCPDateManagerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */; };
 		36A494201B0B0D37009ED6F1 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */; };
 		36A494271B0B28B7009ED6F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A494261B0B28B7009ED6F1 /* Reachability.m */; };
 		36A4942A1B0B36AF009ED6F1 /* IcerEnglish.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */; };
@@ -52,6 +53,8 @@
 		3665DC371B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3665DC391B09E4090084EB27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3665DC3C1B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCPDateManagerLib.a; sourceTree = "<group>"; };
+		3683A83F1B0D80A700CCA2C3 /* CPDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDateManager.h; sourceTree = "<group>"; };
 		36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = "<group>"; };
 		36A494211B0B0D47009ED6F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		36A494251B0B28B7009ED6F1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 				36A58F5E1B09ED08001C894F /* libbz2.1.0.dylib in Frameworks */,
 				36A58F5C1B09ED00001C894F /* libz.dylib in Frameworks */,
 				36A58F5A1B09ECEC001C894F /* Security.framework in Frameworks */,
+				3683A83E1B0D809A00CCA2C3 /* libCPDateManagerLib.a in Frameworks */,
 				36A58F581B09ECE1001C894F /* CoreGraphics.framework in Frameworks */,
 				36A58F561B09ECDB001C894F /* Foundation.framework in Frameworks */,
 				36A58F541B09ECD3001C894F /* UIKit.framework in Frameworks */,
@@ -130,6 +134,7 @@
 		3665DC2B1B09E4090084EB27 /* BaiduT5PlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3683A83F1B0D80A700CCA2C3 /* CPDateManager.h */,
 				36A494251B0B28B7009ED6F1 /* Reachability.h */,
 				36A494261B0B28B7009ED6F1 /* Reachability.m */,
 				36A494211B0B0D47009ED6F1 /* MBProgressHUD.h */,
@@ -169,6 +174,7 @@
 		36A58F5F1B09ED2D001C894F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */,
 				36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */,
 				36A58F611B09ED79001C894F /* libASIHTTP.a */,
 				36A58F621B09ED79001C894F /* libBase64.a */,

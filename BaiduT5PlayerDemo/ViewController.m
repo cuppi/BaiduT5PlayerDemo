@@ -5,13 +5,16 @@
 //  Created by CuppiZhangTF on 15/5/18.
 //  Copyright (c) 2015年 cuppi. All rights reserved.
 //
+
+
+#define __kNotifyPanGestureRecognizerStateChange @"__kNotifyPanGestureRecognizerStateChange"
 #define __kMovieUrl1 [[[NSBundle mainBundle]bundlePath] stringByAppendingPathComponent:@"IcerEnglish.mp4"]
 #define __kMovieUrl2 [[[NSBundle mainBundle]bundlePath] stringByAppendingPathComponent:@"IcerJapanese.mp4"]
 
 //#define __kMovieUrl @"http://bcs.duapp.com/videotest123567/media/%5B%E9%AC%BC%E6%89%93%E9%AC%BC.%E8%8A%B1%E7%B5%AE%5D.Ghost.Against.Ghost.1980.Extras.HALFCD-NORM.mkv"
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIGestureRecognizerDelegate>
 {
     CyberPlayerController *_cpViewController;
     MBProgressHUD *_mbProgressHUD;
@@ -27,10 +30,20 @@
     UIView *_oprationView;
     UISlider *_playerSlider;
     UIButton *_playButton;
+    
+    UIPanGestureRecognizer *_oprationViewPanGesture;
+    
+    NSTimeInterval _panGestureStartTime;
+    CGPoint _panGestureStartPoint;
 }
 @end
 
 @implementation ViewController
+
+- (void)dealloc
+{
+    [_oprationViewPanGesture removeObserver:self forKeyPath:@"state"];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -154,6 +167,7 @@
     _isChangeSharpness = NO;
     _isPostPlayTimePointNotifier = NO;
     _isSliderEditing = NO;
+    _panGestureStartTime = 0;
     _playerTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                     target:self
                                                   selector:@selector(actionUpdateProgressBar)
@@ -164,12 +178,15 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
+/**
+ *  创建拖拽滑动条时,屏幕中间显示的view
+ */
 - (void)createPlaceHolder
 {
     _progressPlaceHolderView = [[UILabel alloc]init];
     [self.view addSubview:_progressPlaceHolderView];
     _progressPlaceHolderView.center = self.view.center;
-    _progressPlaceHolderView.bounds = CGRectMake(0, 0, 100, 70);
+    _progressPlaceHolderView.bounds = CGRectMake(0, 0, 150, 70);
     _progressPlaceHolderView.hidden = YES;
     _progressPlaceHolderView.layer.cornerRadius = 5;
     _progressPlaceHolderView.layer.masksToBounds = YES;
@@ -180,6 +197,7 @@
                                                                          20)];
     [_progressPlaceHolderView addSubview:_progressPlaceHolderLabel];
     _progressPlaceHolderLabel.font = [UIFont boldSystemFontOfSize:14];
+    _progressPlaceHolderLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 /**
@@ -204,7 +222,14 @@
     _oprationView = [[UIView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:_oprationView];
     _oprationView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    [_oprationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTouchOprationView)]];
+    //[_oprationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTouchOprationView)]];
+    _oprationViewPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(actionPanOprationView:)];
+    _oprationViewPanGesture.delegate = self;
+    [_oprationViewPanGesture addObserver:self
+                              forKeyPath:@"state"
+                                 options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                                 context:__kNotifyPanGestureRecognizerStateChange];
+    [_oprationView addGestureRecognizer:_oprationViewPanGesture];
     [self createButton];
     [self createPlayerProgressBar];
 }
@@ -231,7 +256,7 @@
     _playerSlider = [[UISlider alloc]initWithFrame:CGRectMake(0, __kDScreenHeight - 40, __kDScreenWidth - 100, 20)];
     [_oprationView addSubview:_playerSlider];
     _playerSlider.backgroundColor = [UIColor orangeColor];
-    [_playerSlider addTarget:self action:@selector(actionProgressBarEndDraged) forControlEvents:UIControlEventTouchUpOutside | UIControlEventTouchUpInside];
+    [_playerSlider addTarget:self action:@selector(actionProgressBarEndDraged) forControlEvents:UIControlEventTouchUpOutside | UIControlEventTouchUpInside|UIControlEventTouchCancel];
     [_playerSlider addTarget:self action:@selector(actionProgressBarDraging) forControlEvents:UIControlEventValueChanged];
     [_playerSlider addTarget:self action:@selector(actionProgressBarBeganDraged) forControlEvents:UIControlEventTouchDown];
 }
@@ -246,7 +271,9 @@
 }
 
 
-
+/**
+ *  创建网络连接状态对象
+ */
 - (void)createReachabilityObserver
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -265,7 +292,6 @@
 
 
 #pragma mark -- action area
-
 - (void)actionStartPlay:(id)sender
 {
     if(_isPlaying)
@@ -286,7 +312,16 @@
 - (void)actionTouchOprationView
 {
     return;
-    [self actionStartPlay:nil];
+}
+
+- (void)actionPanOprationView:(UIPanGestureRecognizer *)gesture
+{
+    CGPoint point = [gesture locationInView:gesture.view];
+    if(_isPlaying)
+    {
+        CGFloat x_offset = point.x - _panGestureStartPoint.x;
+        //  NSLog(@"-------- %f", x_offset);
+    }
 }
 
 - (void)actionUpdateProgressBar
@@ -348,9 +383,12 @@
 
 - (void)setPlaceHolderLabelCurrentTime:(NSTimeInterval)currentTime andAllTime:(NSTimeInterval)allTime
 {
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%.f",currentTime] attributes:@{NSForegroundColorAttributeName:[UIColor greenColor]}];
-    [attrString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"/%.f",allTime] attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
     
+    NSString *currentString = [[CPDateManager defaultManager]hh_mm_ssFromIntegerSeconds:floor(currentTime)];
+    NSString *allString = [[CPDateManager defaultManager]hh_mm_ssFromIntegerSeconds:floor(allTime)];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:currentString
+                                                                                  attributes:@{NSForegroundColorAttributeName:[UIColor greenColor]}];
+    [attrString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"/%@",allString] attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
     _progressPlaceHolderLabel.attributedText = attrString;
 }
 
@@ -421,6 +459,35 @@
             break;
         }
     }
-    
+}
+
+#pragma mark -- Gesture delegate
+
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if(gestureRecognizer == _oprationViewPanGesture && _isPlaying)
+    {
+        _panGestureStartTime = _cpViewController.currentPlaybackTime;
+        _panGestureStartPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
+    }
+    return YES;
+}
+
+#pragma mark -- KVO method
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if(context == __kNotifyPanGestureRecognizerStateChange)
+    {
+        UIGestureRecognizerState state = [[change valueForKey:NSKeyValueChangeKindKey]integerValue];
+        state == UIGestureRecognizerStatePossible? NSLog(@"------------ UIGestureRecognizerStatePossible"):@"s";
+        state == UIGestureRecognizerStateBegan? NSLog(@"------------ UIGestureRecognizerStateBegan"):@"s";
+        state == UIGestureRecognizerStateChanged? NSLog(@"------------ UIGestureRecognizerStateChanged"):@"s";
+        state == UIGestureRecognizerStateEnded? NSLog(@"------------ UIGestureRecognizerStateEnded"):@"s";
+        state == UIGestureRecognizerStateCancelled? NSLog(@"------------ UIGestureRecognizerStateCancelled"):@"s";
+        state == UIGestureRecognizerStateFailed? NSLog(@"------------ UIGestureRecognizerStateFailed"):@"s";
+        state == UIGestureRecognizerStateRecognized? NSLog(@"------------ UIGestureRecognizerStateRecognized"):@"s";
+        
+    }
 }
 @end
