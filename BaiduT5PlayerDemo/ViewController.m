@@ -222,6 +222,7 @@
     _oprationView = [[UIView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:_oprationView];
     _oprationView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+    
     //[_oprationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTouchOprationView)]];
     _oprationViewPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(actionPanOprationView:)];
     _oprationViewPanGesture.delegate = self;
@@ -316,11 +317,9 @@
 
 - (void)actionPanOprationView:(UIPanGestureRecognizer *)gesture
 {
-    CGPoint point = [gesture locationInView:gesture.view];
     if(_isPlaying)
     {
-        CGFloat x_offset = point.x - _panGestureStartPoint.x;
-        //  NSLog(@"-------- %f", x_offset);
+        [self setPlaceHolderLabelCurrentTime:[self timeByScaleWithOffset:gesture] andAllTime:_cpViewController.infoDuration];
     }
 }
 
@@ -349,9 +348,9 @@
 
 - (void)actionProgressBarEndDraged
 {
+    [_cpViewController seekTo:_cpViewController.infoDuration*_playerSlider.value];
     [self hiddenPlaceHolder];
     _isSliderEditing = NO;
-    [_cpViewController seekTo:_cpViewController.infoDuration*_playerSlider.value];
 }
 
 
@@ -379,6 +378,13 @@
 - (void)hiddenPlaceHolder
 {
     _progressPlaceHolderView.hidden = YES;
+}
+
+- (NSTimeInterval)timeByScaleWithOffset:(UIGestureRecognizer *)gesture
+{
+    CGPoint point = [gesture locationInView:gesture.view];
+    CGFloat x_offset = point.x - _panGestureStartPoint.x;
+    return (NSTimeInterval)(x_offset*(CGWidth(_playerSlider.frame)/CGWidth(_oprationView.frame)))/CGWidth(_playerSlider.frame)*_cpViewController.infoDuration;
 }
 
 - (void)setPlaceHolderLabelCurrentTime:(NSTimeInterval)currentTime andAllTime:(NSTimeInterval)allTime
@@ -470,6 +476,7 @@
     {
         _panGestureStartTime = _cpViewController.currentPlaybackTime;
         _panGestureStartPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
+        _isSliderEditing = YES;
     }
     return YES;
 }
@@ -479,14 +486,19 @@
 {
     if(context == __kNotifyPanGestureRecognizerStateChange)
     {
-        UIGestureRecognizerState state = [[change valueForKey:NSKeyValueChangeKindKey]integerValue];
-        state == UIGestureRecognizerStatePossible? NSLog(@"------------ UIGestureRecognizerStatePossible"):@"s";
-        state == UIGestureRecognizerStateBegan? NSLog(@"------------ UIGestureRecognizerStateBegan"):@"s";
-        state == UIGestureRecognizerStateChanged? NSLog(@"------------ UIGestureRecognizerStateChanged"):@"s";
-        state == UIGestureRecognizerStateEnded? NSLog(@"------------ UIGestureRecognizerStateEnded"):@"s";
-        state == UIGestureRecognizerStateCancelled? NSLog(@"------------ UIGestureRecognizerStateCancelled"):@"s";
-        state == UIGestureRecognizerStateFailed? NSLog(@"------------ UIGestureRecognizerStateFailed"):@"s";
-        state == UIGestureRecognizerStateRecognized? NSLog(@"------------ UIGestureRecognizerStateRecognized"):@"s";
+        UIPanGestureRecognizer *gesture = (UIPanGestureRecognizer *)object;
+        if (![gesture numberOfTouches])
+        {
+            
+            [_cpViewController seekTo:_panGestureStartTime + ([gesture locationInView:gesture.view].x - _panGestureStartPoint.x)];
+            [self hiddenPlaceHolder];
+            _isSliderEditing = NO;
+            _panGestureStartTime = 0;
+        }
+        else
+        {
+            [self showPlaceHolder];
+        }
         
     }
 }

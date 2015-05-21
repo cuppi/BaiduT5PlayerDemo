@@ -14,10 +14,10 @@
 		3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC391B09E4090084EB27 /* Images.xcassets */; };
 		3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */; };
 		3683A83E1B0D809A00CCA2C3 /* libCPDateManagerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */; };
+		3683A88B1B0DE2C500CCA2C3 /* IcerEnglish.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3683A8891B0DE2C500CCA2C3 /* IcerEnglish.mp4 */; };
+		3683A88C1B0DE2C500CCA2C3 /* IcerJapanese.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3683A88A1B0DE2C500CCA2C3 /* IcerJapanese.mp4 */; };
 		36A494201B0B0D37009ED6F1 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */; };
 		36A494271B0B28B7009ED6F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A494261B0B28B7009ED6F1 /* Reachability.m */; };
-		36A4942A1B0B36AF009ED6F1 /* IcerEnglish.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */; };
-		36A4942C1B0B385D009ED6F1 /* IcerJapanese.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 36A4942B1B0B385D009ED6F1 /* IcerJapanese.mp4 */; };
 		36A58F441B09EC7A001C894F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F431B09EC7A001C894F /* MobileCoreServices.framework */; };
 		36A58F461B09EC8C001C894F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F451B09EC8C001C894F /* AudioToolbox.framework */; };
 		36A58F481B09EC9D001C894F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F471B09EC9D001C894F /* SystemConfiguration.framework */; };
@@ -55,12 +55,12 @@
 		3665DC3C1B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCPDateManagerLib.a; sourceTree = "<group>"; };
 		3683A83F1B0D80A700CCA2C3 /* CPDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDateManager.h; sourceTree = "<group>"; };
+		3683A8891B0DE2C500CCA2C3 /* IcerEnglish.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcerEnglish.mp4; sourceTree = "<group>"; };
+		3683A88A1B0DE2C500CCA2C3 /* IcerJapanese.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcerJapanese.mp4; sourceTree = "<group>"; };
 		36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = "<group>"; };
 		36A494211B0B0D47009ED6F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		36A494251B0B28B7009ED6F1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		36A494261B0B28B7009ED6F1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcerEnglish.mp4; sourceTree = "<group>"; };
-		36A4942B1B0B385D009ED6F1 /* IcerJapanese.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcerJapanese.mp4; sourceTree = "<group>"; };
 		36A58F431B09EC7A001C894F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		36A58F451B09EC8C001C894F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		36A58F471B09EC9D001C894F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -165,8 +165,8 @@
 		36A494281B0B3698009ED6F1 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
-				36A4942B1B0B385D009ED6F1 /* IcerJapanese.mp4 */,
-				36A494291B0B36AF009ED6F1 /* IcerEnglish.mp4 */,
+				3683A8891B0DE2C500CCA2C3 /* IcerEnglish.mp4 */,
+				3683A88A1B0DE2C500CCA2C3 /* IcerJapanese.mp4 */,
 			);
 			name = Movie;
 			sourceTree = "<group>";
@@ -266,10 +266,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3665DC381B09E4090084EB27 /* Main.storyboard in Resources */,
-				36A4942C1B0B385D009ED6F1 /* IcerJapanese.mp4 in Resources */,
+				3683A88C1B0DE2C500CCA2C3 /* IcerJapanese.mp4 in Resources */,
 				3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */,
 				3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */,
-				36A4942A1B0B36AF009ED6F1 /* IcerEnglish.mp4 in Resources */,
+				3683A88B1B0DE2C500CCA2C3 /* IcerEnglish.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
