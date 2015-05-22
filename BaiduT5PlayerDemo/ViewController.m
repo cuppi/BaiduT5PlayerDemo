@@ -8,8 +8,14 @@
 
 
 #define __kNotifyPanGestureRecognizerStateChange @"__kNotifyPanGestureRecognizerStateChange"
-#define __kMovieUrl1 [[[NSBundle mainBundle]bundlePath] stringByAppendingPathComponent:@"IcerEnglish.mp4"]
-#define __kMovieUrl2 [[[NSBundle mainBundle]bundlePath] stringByAppendingPathComponent:@"IcerJapanese.mp4"]
+
+#define __kMovieUrl1 @"ftp://test/web-1@v0.api.upyun.com/心肺复苏.mp4"
+#define __kMovieUrl2 @"ftp://test/web-1@v0.api.upyun.com/心肺复苏.mp4"
+//ftp://test/web-1@v0.api.upyun.com/fad6c16e-27df-4ad9-b17b-f9b6cda20e6a2.jpg
+//http://test/web-1/fad6c16e-27df-4ad9-b17b-f9b6cda20e6a2.jpg
+
+//#define __kMovieUrl1 [[[NSBundle mainBundle]bundlePath] stringByAppendingPathComponent:@"IcerEnglish.mp4"]
+//#define __kMovieUrl2 [[[NSBundle mainBundle]bundlePath] stringByAppendingPathComponent:@"IcerJapanese.mp4"]
 
 //#define __kMovieUrl @"http://bcs.duapp.com/videotest123567/media/%5B%E9%AC%BC%E6%89%93%E9%AC%BC.%E8%8A%B1%E7%B5%AE%5D.Ghost.Against.Ghost.1980.Extras.HALFCD-NORM.mkv"
 #import "ViewController.h"
@@ -22,6 +28,7 @@
     BOOL _isChangeSharpness;
     BOOL _isPostPlayTimePointNotifier;
     BOOL _isSliderEditing;
+    BOOL _isCaching;
     NSTimeInterval _breakPointTime;
     NSTimer *_playerTimer;
     
@@ -32,7 +39,7 @@
     UIButton *_playButton;
     
     UIPanGestureRecognizer *_oprationViewPanGesture;
-    
+    UITapGestureRecognizer *_oprationViewTapGesture;
     NSTimeInterval _panGestureStartTime;
     CGPoint _panGestureStartPoint;
 }
@@ -74,7 +81,6 @@
                                                      object:_cpViewController
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
-                                                     [_cpViewController seekTo:_breakPointTime];
                                                  }];
     //  2
     [[NSNotificationCenter defaultCenter]addObserverForName:CyberPlayerPlaybackDidFinishNotification
@@ -96,6 +102,7 @@
                                                      object:_cpViewController
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
+                                                     _isCaching = YES;
                                                  }];
     //  4
     [[NSNotificationCenter defaultCenter]addObserverForName:CyberPlayerGotCachePercentNotification
@@ -106,6 +113,7 @@
                                                      if([note.object intValue] == 100)
                                                      {
                                                          [_mbProgressHUD hide:YES];
+                                                         _isCaching = NO;
                                                      }
                                                      else
                                                      {
@@ -117,7 +125,7 @@
                                                      object:_cpViewController
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
-                                                     [_mbProgressHUD show:NO];
+                                                     [_mbProgressHUD hide:YES];
                                                  }];
     //  6
     [[NSNotificationCenter defaultCenter]addObserverForName:CyberPlayerSeekingDidFinishNotification
@@ -125,7 +133,11 @@
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
                                                      NSLog(@"** 6 ************  CyberPlayerSeekingDidFinishNotification");
-                                                     
+                                                     if(![_oprationViewPanGesture numberOfTouches])
+                                                     {
+                                                         [self hiddenPlaceHolder];
+                                                         _isSliderEditing = _isCaching;
+                                                     }
                                                  }];
     
     //  7
@@ -167,6 +179,7 @@
     _isChangeSharpness = NO;
     _isPostPlayTimePointNotifier = NO;
     _isSliderEditing = NO;
+    _isCaching = NO;
     _panGestureStartTime = 0;
     _playerTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                     target:self
@@ -222,15 +235,11 @@
     _oprationView = [[UIView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:_oprationView];
     _oprationView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    
-    //[_oprationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTouchOprationView)]];
     _oprationViewPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(actionPanOprationView:)];
     _oprationViewPanGesture.delegate = self;
-    [_oprationViewPanGesture addObserver:self
-                              forKeyPath:@"state"
-                                 options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-                                 context:__kNotifyPanGestureRecognizerStateChange];
     [_oprationView addGestureRecognizer:_oprationViewPanGesture];
+    _oprationViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actioTapprationView:)];
+    [_oprationView addGestureRecognizer:_oprationViewTapGesture];
     [self createButton];
     [self createPlayerProgressBar];
 }
@@ -271,7 +280,6 @@
     [self.view addSubview:_mbProgressHUD];
 }
 
-
 /**
  *  创建网络连接状态对象
  */
@@ -293,6 +301,12 @@
 
 
 #pragma mark -- action area
+
+/**
+ *  点击开始播放按钮开始播放
+ *
+ *  @param sender 点击的控件
+ */
 - (void)actionStartPlay:(id)sender
 {
     if(_isPlaying)
@@ -310,24 +324,47 @@
     }
 }
 
-- (void)actionTouchOprationView
+/**
+ *  点击操作View
+ */
+- (void)actioTapprationView:(UITapGestureRecognizer *)gesture
 {
+    [self actionStartPlay:nil];
     return;
 }
 
+/**
+ *  对操作View进行滑动手势
+ *
+ *  @param gesture 手势
+ */
 - (void)actionPanOprationView:(UIPanGestureRecognizer *)gesture
 {
-    if(_isPlaying)
+    if([gesture numberOfTouches])
     {
-        [self setPlaceHolderLabelCurrentTime:[self timeByScaleWithOffset:gesture] andAllTime:_cpViewController.infoDuration];
+        if(_isPlaying)
+        {
+            NSTimeInterval nowTime = [self timeByScaleWithGesture:gesture];
+            [self setPlaceHolderLabelCurrentTime:nowTime andAllTime:_cpViewController.infoDuration];
+            [_playerSlider setValue:nowTime/_cpViewController.infoDuration animated:YES];
+        }
     }
+    else
+    {
+        [_cpViewController seekTo:[self timeByScaleWithGesture:gesture]];
+        
+    }
+    
 }
 
+/**
+ *  更新滑动条
+ */
 - (void)actionUpdateProgressBar
 {
     if(!_isSliderEditing)
     {
-        _playerSlider.value = _cpViewController.currentPlaybackTime/_cpViewController.infoDuration;
+        [_playerSlider setValue:_cpViewController.currentPlaybackTime/_cpViewController.infoDuration animated:YES];
         [self setPlaceHolderLabelCurrentTime:_cpViewController.currentPlaybackTime andAllTime:_cpViewController.infoDuration];
     }
 }
@@ -349,44 +386,63 @@
 - (void)actionProgressBarEndDraged
 {
     [_cpViewController seekTo:_cpViewController.infoDuration*_playerSlider.value];
-    [self hiddenPlaceHolder];
-    _isSliderEditing = NO;
 }
 
-
-
-
-
 #pragma mark -- method
+/**
+ *  开始发送播放时间通知
+ */
 - (void)startPostPlayTimePointNotifier
 {
     _isPostPlayTimePointNotifier = YES;
     [_playerTimer setFireDate:[NSDate distantPast]];
 }
 
+/**
+ *  停止发送播放时间通知
+ */
 - (void)stopPostPlayTimePointNotifier
 {
     [_playerTimer setFireDate:[NSDate distantFuture]];
     _isPostPlayTimePointNotifier = NO;
 }
 
+/**
+ *  显示屏幕中央的提示框
+ */
 - (void)showPlaceHolder
 {
     _progressPlaceHolderView.hidden = NO;
 }
 
+/**
+ *  隐藏屏幕中央的提示框
+ */
 - (void)hiddenPlaceHolder
 {
     _progressPlaceHolderView.hidden = YES;
 }
 
-- (NSTimeInterval)timeByScaleWithOffset:(UIGestureRecognizer *)gesture
+/**
+ *  根据当前手势算出对应的需要播放的时间点
+ *
+ *  @param gesture 手势
+ *
+ *  @return 需要播放的时间点
+ */
+- (NSTimeInterval)timeByScaleWithGesture:(UIGestureRecognizer *)gesture
 {
     CGPoint point = [gesture locationInView:gesture.view];
     CGFloat x_offset = point.x - _panGestureStartPoint.x;
-    return (NSTimeInterval)(x_offset*(CGWidth(_playerSlider.frame)/CGWidth(_oprationView.frame)))/CGWidth(_playerSlider.frame)*_cpViewController.infoDuration;
+    return _panGestureStartTime + (NSTimeInterval)(x_offset*(CGWidth(_playerSlider.frame)/CGWidth(_oprationView.frame)))/CGWidth(_playerSlider.frame)*_cpViewController.infoDuration;
 }
 
+/**
+ *  设置屏幕中央的提示框中时间的数字
+ *
+ *  @param currentTime 当前播放的时间
+ *  @param allTime     所有的时间
+ */
 - (void)setPlaceHolderLabelCurrentTime:(NSTimeInterval)currentTime andAllTime:(NSTimeInterval)allTime
 {
     
@@ -469,7 +525,6 @@
 
 #pragma mark -- Gesture delegate
 
-
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     if(gestureRecognizer == _oprationViewPanGesture && _isPlaying)
@@ -477,29 +532,9 @@
         _panGestureStartTime = _cpViewController.currentPlaybackTime;
         _panGestureStartPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
         _isSliderEditing = YES;
+        [self showPlaceHolder];
     }
     return YES;
 }
 
-#pragma mark -- KVO method
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if(context == __kNotifyPanGestureRecognizerStateChange)
-    {
-        UIPanGestureRecognizer *gesture = (UIPanGestureRecognizer *)object;
-        if (![gesture numberOfTouches])
-        {
-            
-            [_cpViewController seekTo:_panGestureStartTime + ([gesture locationInView:gesture.view].x - _panGestureStartPoint.x)];
-            [self hiddenPlaceHolder];
-            _isSliderEditing = NO;
-            _panGestureStartTime = 0;
-        }
-        else
-        {
-            [self showPlaceHolder];
-        }
-        
-    }
-}
 @end
