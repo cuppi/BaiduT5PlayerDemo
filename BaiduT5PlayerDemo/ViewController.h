@@ -12,7 +12,7 @@
 #import "Reachability.h"
 #import "CPDateManager.h"
 #import <SystemConfiguration/SystemConfiguration.h>
-
+#import <MobileCoreServices/MobileCoreServices.h>
 @interface ViewController : UIViewController
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;

@@ -1,7 +1,7 @@
 /*
-     File: Reachability.h
+ File: Reachability.h
  Abstract: Basic demonstration of how to use the SystemConfiguration Reachablity APIs.
-  Version: 3.5
+ Version: 3.5
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -48,12 +48,17 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netinet/in.h>
-
+#import <UIKit/UIDevice.h>
+#import <CoreTelephony/CoreTelephonyDefines.h>
 
 typedef enum : NSInteger {
-	NotReachable = 0,
-	ReachableViaWiFi,
-	ReachableViaWWAN
+    NotReachable = 0,
+    ReachableViaWiFi,
+    ReachableVia4G,
+    ReachableVia3G,
+    ReachableVia2G,
+    ReachableViaOther
+    
 } NetworkStatus;
 
 

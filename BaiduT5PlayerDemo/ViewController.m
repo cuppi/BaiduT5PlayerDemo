@@ -9,8 +9,8 @@
 
 #define __kNotifyPanGestureRecognizerStateChange @"__kNotifyPanGestureRecognizerStateChange"
 
-#define __kMovieUrl1 @"ftp://test/web-1@v0.api.upyun.com/心肺复苏.mp4"
-#define __kMovieUrl2 @"ftp://test/web-1@v0.api.upyun.com/心肺复苏.mp4"
+#define __kMovieUrl1 @"http://web-1.b0.upaiyun.com/心肺复苏.mp4"
+#define __kMovieUrl2 @"http://web-1.b0.upaiyun.com/心肺复苏.mp4"
 //ftp://test/web-1@v0.api.upyun.com/fad6c16e-27df-4ad9-b17b-f9b6cda20e6a2.jpg
 //http://test/web-1/fad6c16e-27df-4ad9-b17b-f9b6cda20e6a2.jpg
 
@@ -29,6 +29,7 @@
     BOOL _isPostPlayTimePointNotifier;
     BOOL _isSliderEditing;
     BOOL _isCaching;
+    BOOL _isStart;
     NSTimeInterval _breakPointTime;
     NSTimer *_playerTimer;
     
@@ -38,7 +39,8 @@
     UISlider *_playerSlider;
     UIButton *_playButton;
     
-    UIPanGestureRecognizer *_oprationViewPanGesture;
+    UIPanGestureRecognizer *_oprationViewPanHorizontalGesture;
+    UIPanGestureRecognizer *_oprationViewPanVerticalGesture;
     UITapGestureRecognizer *_oprationViewTapGesture;
     NSTimeInterval _panGestureStartTime;
     CGPoint _panGestureStartPoint;
@@ -49,7 +51,7 @@
 
 - (void)dealloc
 {
-    [_oprationViewPanGesture removeObserver:self forKeyPath:@"state"];
+    [_oprationViewPanHorizontalGesture removeObserver:self forKeyPath:@"state"];
 }
 
 - (void)viewDidLoad {
@@ -95,6 +97,14 @@
                                                          _breakPointTime = 0;
                                                          _isChangeSharpness = NO;
                                                      }
+                                                     else
+                                                     {
+                                                         _isStart = NO;
+                                                         _isPlaying = NO;
+                                                         _isSliderEditing = NO;
+                                                         _isCaching = NO;
+                                                         [_playButton setTitle:@"开始播放" forState:UIControlStateNormal];
+                                                     }
                                                      
                                                  }];
     //  3
@@ -118,6 +128,7 @@
                                                      else
                                                      {
                                                          [_mbProgressHUD show:YES];
+                                                         _mbProgressHUD.detailsLabelText = [NSString stringWithFormat:@"%d %%",[note.object intValue]];
                                                      }
                                                  }];
     //  5
@@ -133,7 +144,7 @@
                                                       queue:[NSOperationQueue mainQueue]
                                                  usingBlock:^(NSNotification *note) {
                                                      NSLog(@"** 6 ************  CyberPlayerSeekingDidFinishNotification");
-                                                     if(![_oprationViewPanGesture numberOfTouches])
+                                                     if(![_oprationViewPanHorizontalGesture numberOfTouches])
                                                      {
                                                          [self hiddenPlaceHolder];
                                                          _isSliderEditing = _isCaching;
@@ -174,12 +185,16 @@
 
 - (void)createMetadata
 {
+    
+    
+    
     _breakPointTime = 0;
     _isPlaying = NO;
     _isChangeSharpness = NO;
     _isPostPlayTimePointNotifier = NO;
     _isSliderEditing = NO;
     _isCaching = NO;
+    _isStart = NO;
     _panGestureStartTime = 0;
     _playerTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                     target:self
@@ -235,13 +250,20 @@
     _oprationView = [[UIView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:_oprationView];
     _oprationView.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    _oprationViewPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(actionPanOprationView:)];
-    _oprationViewPanGesture.delegate = self;
-    [_oprationView addGestureRecognizer:_oprationViewPanGesture];
-    _oprationViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actioTapprationView:)];
+    
+    // pan horizontal 手势
+    _oprationViewPanHorizontalGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(actionPanHorizontalOprationView:)];
+    _oprationViewPanHorizontalGesture.delegate = self;
+    [_oprationView addGestureRecognizer:_oprationViewPanHorizontalGesture];
+    
+    // tap 手势
+    _oprationViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                      action:@selector(actioTapprationView:)];
     [_oprationView addGestureRecognizer:_oprationViewTapGesture];
     [self createButton];
     [self createPlayerProgressBar];
+    
 }
 
 /**
@@ -278,6 +300,7 @@
 {
     _mbProgressHUD = [[MBProgressHUD alloc]initWithView:_cpViewController.view];
     [self.view addSubview:_mbProgressHUD];
+    _mbProgressHUD.detailsLabelText = @"";
 }
 
 /**
@@ -309,6 +332,7 @@
  */
 - (void)actionStartPlay:(id)sender
 {
+    _isStart = YES;
     if(_isPlaying)
     {
         [_cpViewController pause];
@@ -338,7 +362,7 @@
  *
  *  @param gesture 手势
  */
-- (void)actionPanOprationView:(UIPanGestureRecognizer *)gesture
+- (void)actionPanHorizontalOprationView:(UIPanGestureRecognizer *)gesture
 {
     if([gesture numberOfTouches])
     {
@@ -354,9 +378,12 @@
         [_cpViewController seekTo:[self timeByScaleWithGesture:gesture]];
         
     }
-    
 }
 
+- (void)actionPanVerticalOprationView:(UIPanGestureRecognizer *)gesture
+{
+    NSLog(@"调节声音");
+}
 /**
  *  更新滑动条
  */
@@ -467,7 +494,7 @@
 
 - (void)updateInterfaceWithReachability:(Reachability *)reachability
 {
-    if(reachability == self.hostReachability)
+    if([reachability isEqual:self.hostReachability])
     {
         [self handleState:reachability];
     }
@@ -490,35 +517,45 @@
             break;
         }
             
-        case ReachableViaWWAN:
+        case ReachableVia2G:
         {
-            if([reachability connectionRequired])
+            NSLog(@"当前是2G");
+            if(_isStart)
             {
-                NSLog(@"当前是2.5G");
                 _breakPointTime = _cpViewController.currentPlaybackTime;
                 [_cpViewController stop];
                 _isChangeSharpness = YES;
                 [_cpViewController setContentString:__kMovieUrl1];
             }
-            else
+            break;
+        }
+        case ReachableVia3G:
+        case ReachableVia4G:
+        {
+            NSLog(@"当前是3G或4G");
+            if(_isStart)
             {
-                NSLog(@"当前是3G");
                 _breakPointTime = _cpViewController.currentPlaybackTime;
                 [_cpViewController stop];
                 _isChangeSharpness = YES;
                 [_cpViewController setContentString:__kMovieUrl2];
             }
-            
             break;
         }
-            
         case ReachableViaWiFi:
         {
-            _breakPointTime = _cpViewController.currentPlaybackTime;
-            [_cpViewController stop];
-            _isChangeSharpness = YES;
-            [_cpViewController setContentString:__kMovieUrl2];
+            if(_isStart)
+            {
+                _breakPointTime = _cpViewController.currentPlaybackTime;
+                [_cpViewController stop];
+                _isChangeSharpness = YES;
+                [_cpViewController setContentString:__kMovieUrl2];
+            }
             break;
+        }
+        default:
+        {
+            NSLog(@"ERROR:%ld", (long)netStatus);
         }
     }
 }
@@ -527,7 +564,7 @@
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    if(gestureRecognizer == _oprationViewPanGesture && _isPlaying)
+    if([gestureRecognizer isEqual:_oprationViewPanHorizontalGesture] && _isPlaying)
     {
         _panGestureStartTime = _cpViewController.currentPlaybackTime;
         _panGestureStartPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
