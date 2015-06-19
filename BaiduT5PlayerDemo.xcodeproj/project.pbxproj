@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		366214431B253D7900E37772 /* libCPDateManagerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 366214421B253D7900E37772 /* libCPDateManagerLib.a */; };
+		366214451B253DC900E37772 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 366214441B253DC900E37772 /* libMBProgressHUD.a */; };
 		3665DC2F1B09E4090084EB27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC2E1B09E4090084EB27 /* main.m */; };
 		3665DC321B09E4090084EB27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC311B09E4090084EB27 /* AppDelegate.m */; };
 		3665DC351B09E4090084EB27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3665DC341B09E4090084EB27 /* ViewController.m */; };
 		3665DC381B09E4090084EB27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC361B09E4090084EB27 /* Main.storyboard */; };
 		3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC391B09E4090084EB27 /* Images.xcassets */; };
 		3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3665DC3B1B09E4090084EB27 /* LaunchScreen.xib */; };
-		3683A83E1B0D809A00CCA2C3 /* libCPDateManagerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */; };
-		36A494201B0B0D37009ED6F1 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */; };
+		3670A7611B2198C400344397 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3670A7601B2198C400344397 /* Default-568h@2x.png */; };
 		36A494271B0B28B7009ED6F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A494261B0B28B7009ED6F1 /* Reachability.m */; };
 		36A58F441B09EC7A001C894F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F431B09EC7A001C894F /* MobileCoreServices.framework */; };
 		36A58F461B09EC8C001C894F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A58F451B09EC8C001C894F /* AudioToolbox.framework */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		3646BF471B0C398F000D166F /* VariableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableDefinition.h; sourceTree = "<group>"; };
 		3646BF4A1B0C3B22000D166F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
+		366214421B253D7900E37772 /* libCPDateManagerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCPDateManagerLib.a; sourceTree = "<group>"; };
+		366214441B253DC900E37772 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = "<group>"; };
 		3665DC2D1B09E4090084EB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3665DC2E1B09E4090084EB27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3665DC301B09E4090084EB27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,9 +54,8 @@
 		3665DC371B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3665DC391B09E4090084EB27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3665DC3C1B09E4090084EB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCPDateManagerLib.a; sourceTree = "<group>"; };
+		3670A7601B2198C400344397 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3683A83F1B0D80A700CCA2C3 /* CPDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDateManager.h; sourceTree = "<group>"; };
-		36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = "<group>"; };
 		36A494211B0B0D47009ED6F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		36A494251B0B28B7009ED6F1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		36A494261B0B28B7009ED6F1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 				36A58F5E1B09ED08001C894F /* libbz2.1.0.dylib in Frameworks */,
 				36A58F5C1B09ED00001C894F /* libz.dylib in Frameworks */,
 				36A58F5A1B09ECEC001C894F /* Security.framework in Frameworks */,
-				3683A83E1B0D809A00CCA2C3 /* libCPDateManagerLib.a in Frameworks */,
+				366214431B253D7900E37772 /* libCPDateManagerLib.a in Frameworks */,
 				36A58F581B09ECE1001C894F /* CoreGraphics.framework in Frameworks */,
 				36A58F561B09ECDB001C894F /* Foundation.framework in Frameworks */,
 				36A58F541B09ECD3001C894F /* UIKit.framework in Frameworks */,
@@ -101,9 +103,9 @@
 				36A58F521B09ECCD001C894F /* MediaPlayer.framework in Frameworks */,
 				36A58F501B09ECC4001C894F /* OpenAL.framework in Frameworks */,
 				36A58F4E1B09ECBD001C894F /* OpenGLES.framework in Frameworks */,
-				36A494201B0B0D37009ED6F1 /* libMBProgressHUD.a in Frameworks */,
 				36A58F681B09ED79001C894F /* libASIHTTP.a in Frameworks */,
 				36A58F4C1B09ECB6001C894F /* QuartzCore.framework in Frameworks */,
+				366214451B253DC900E37772 /* libMBProgressHUD.a in Frameworks */,
 				36A58F6C1B09ED79001C894F /* libGzipCompressor.a in Frameworks */,
 				36A58F4A1B09ECAE001C894F /* CFNetwork.framework in Frameworks */,
 				36A58F481B09EC9D001C894F /* SystemConfiguration.framework in Frameworks */,
@@ -119,6 +121,7 @@
 		3665DC201B09E4090084EB27 = {
 			isa = PBXGroup;
 			children = (
+				3670A7601B2198C400344397 /* Default-568h@2x.png */,
 				36A494281B0B3698009ED6F1 /* Movie */,
 				36A58F601B09ED2F001C894F /* Frameworks */,
 				36A58F5F1B09ED2D001C894F /* Resource */,
@@ -168,8 +171,8 @@
 		36A58F5F1B09ED2D001C894F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3683A83D1B0D809A00CCA2C3 /* libCPDateManagerLib.a */,
-				36A4941F1B0B0D37009ED6F1 /* libMBProgressHUD.a */,
+				366214441B253DC900E37772 /* libMBProgressHUD.a */,
+				366214421B253D7900E37772 /* libCPDateManagerLib.a */,
 				36A58F611B09ED79001C894F /* libASIHTTP.a */,
 				36A58F621B09ED79001C894F /* libBase64.a */,
 				36A58F631B09ED79001C894F /* libCyberPlayerController.a */,
@@ -233,6 +236,7 @@
 				TargetAttributes = {
 					3665DC281B09E4090084EB27 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QT523S54R9;
 					};
 				};
 			};
@@ -260,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3665DC381B09E4090084EB27 /* Main.storyboard in Resources */,
+				3670A7611B2198C400344397 /* Default-568h@2x.png in Resources */,
 				3665DC3D1B09E4090084EB27 /* LaunchScreen.xib in Resources */,
 				3665DC3A1B09E4090084EB27 /* Images.xcassets in Resources */,
 			);
@@ -339,7 +344,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-Objc";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -376,6 +382,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-Objc";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -385,13 +393,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = BaiduT5PlayerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -400,13 +411,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = BaiduT5PlayerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

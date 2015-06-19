@@ -9,8 +9,8 @@
 
 #define __kNotifyPanGestureRecognizerStateChange @"__kNotifyPanGestureRecognizerStateChange"
 
-#define __kMovieUrl1 @"http://web-1.b0.upaiyun.com/心肺复苏.mp4"
-#define __kMovieUrl2 @"http://web-1.b0.upaiyun.com/心肺复苏.mp4"
+#define __kMovieUrl1 @"http://web-1.b0.upaiyun.com/1心肺复苏1000-160.mp4"
+#define __kMovieUrl2 @"http://web-1.b0.upaiyun.com/1心肺复苏1000-160.mp4"
 //ftp://test/web-1@v0.api.upyun.com/fad6c16e-27df-4ad9-b17b-f9b6cda20e6a2.jpg
 //http://test/web-1/fad6c16e-27df-4ad9-b17b-f9b6cda20e6a2.jpg
 
@@ -181,6 +181,7 @@
     
     [self createReachabilityObserver];
     [self startPostPlayTimePointNotifier];
+    [self actionStartPlay:nil];
 }
 
 - (void)createMetadata
@@ -201,7 +202,7 @@
                                                   selector:@selector(actionUpdateProgressBar)
                                                   userInfo:nil
                                                    repeats:YES];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor orangeColor];
     [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
